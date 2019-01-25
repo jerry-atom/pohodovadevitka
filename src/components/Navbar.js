@@ -1,80 +1,81 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
-import logo from '../img/logo.svg'
+import React from "react";
+import { Link } from "gatsby";
+import {
+  Collapse,
+  Container,
+  Nav,
+  Navbar as BNavbar,
+  NavbarBrand,
+  NavItem,
+  NavLink,
+  NavbarToggler
+} from "reactstrap";
+import logoLarge from "../img/logo-lg.png";
+import logoSmall from "../img/logo-sm.png";
 
-const Navbar = class extends React.Component {
+export default class Navbar extends React.Component {
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    // Get all "navbar-burger" elements
-   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    // Check if there are any navbar burgers
-   if ($navbarBurgers.length > 0) {
- 
-     // Add a click event on each of them
-     $navbarBurgers.forEach( el => {
-       el.addEventListener('click', () => {
- 
-         // Get the target from the "data-target" attribute
-         const target = el.dataset.target;
-         const $target = document.getElementById(target);
- 
-         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-         el.classList.toggle('is-active');
-         $target.classList.toggle('is-active');
- 
-       });
-     });
-   }
- }
- 
- render() {
-   return (
-  
-  <nav className="navbar is-transparent" role="navigation" aria-label="main-navigation">
-    <div className="container">
-      <div className="navbar-brand">
-        <Link to="/" className="navbar-item" title="Logo">
-          <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
-        </Link>
-        {/* Hamburger menu */}
-        <div className="navbar-burger burger" data-target="navMenu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-      <div id="navMenu" className="navbar-menu">
-      <div className="navbar-start has-text-centered">
-        <Link className="navbar-item" to="/about">
-          About
-        </Link>
-        <Link className="navbar-item" to="/products">
-          Products
-        </Link>
-        <Link className="navbar-item" to="/contact">
-          Contact
-        </Link>
-        <Link className="navbar-item" to="/contact/examples">
-          Form Examples
-        </Link>
-      </div>
-      <div className="navbar-end has-text-centered">
-        <a
-          className="navbar-item"
-          href="https://github.com/AustinGreen/gatsby-netlify-cms-boilerplate"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">
-            <img src={github} alt="Github" />
-          </span>
-        </a>
-      </div>
-      </div>
-    </div>
-  </nav>
-  )}
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+  render() {
+    return (
+      <BNavbar color="light" light expand="lg">
+        <Container>
+          <NavbarBrand>
+            <Link to="/" className="navbar-item" title="Logo">
+              <img
+                src={logoSmall}
+                className="d-inline d-lg-none"
+                alt="Logo pohodové devítky"
+                style={{ width: 34, height: 34 }}
+              />
+              <img
+                src={logoLarge}
+                className="d-none d-lg-inline my-2"
+                alt="Logo pohodové devítky"
+                style={{ width: 300, height: 45 }}
+              />
+            </Link>
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink tag={Link} to="/about">
+                  About
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/products">
+                  Products
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/contact">
+                  Contact
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={Link} to="/contact/examples">
+                  Form Examples
+                </NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Container>
+      </BNavbar>
+    );
+  }
 }
-
-export default Navbar

@@ -1,64 +1,62 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import React from "react";
+import PropTypes from "prop-types";
+import { Link, graphql } from "gatsby";
+import Layout from "../components/Layout";
+import { Card, CardBody, CardFooter, CardLink, Container } from "reactstrap";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const Post = (post) => (
+  <Card>
+    <CardBody>
+      <p class="card-title">{ post.frontmatter.title }</p>
+    </CardBody>
+    <CardFooter>
+      <Link className="card-link" to={post.fields.slug}>
+        Více &raquo;
+      </Link>
+      <small class="text-muted float-right">
+        <i class="fas fa-calendar"></i> {post.frontmatter.date}
+      </small>
+    </CardFooter>
+  </Card>
+);
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { data } = this.props;
+    const { edges: posts } = data.allMarkdownRemark;
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #333', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
+        <Container className="py-3">
+          <h1 class="py-3">PoHodová devítka <small class="text-muted">běžecký závod Velké Bíteše</small></h1>
+          <p class="lead">
+            Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
+          </p>
+
+          <div className="row">
+            {posts.map(({ node: post }) => <div className="col-12 col-md-6 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
           </div>
-        </section>
+        </Container>
       </Layout>
-    )
+    );
   }
 }
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
       edges {
         node {
@@ -76,4 +74,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
