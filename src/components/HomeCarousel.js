@@ -62,6 +62,7 @@ class HomeCarousel extends Component {
           onExiting={this.onExiting}
           onExited={this.onExited}
           key={item.node.id}
+          role="listitem"
         >
           <Img fluid={item.node.childImageSharp.fluid} />
         </CarouselItem>
@@ -74,7 +75,7 @@ class HomeCarousel extends Component {
         previous={this.previous}
       >
         <CarouselIndicators
-          items={this.props.items}
+          items={this.props.items.map(x => x.node.id)}
           activeIndex={activeIndex}
           onClickHandler={this.goToIndex}
         />

@@ -33,21 +33,19 @@ export default class Navbar extends React.Component {
     return (
       <BNavbar color="light" light expand="lg">
         <Container>
-          <NavbarBrand>
-            <Link to="/" className="navbar-item" title="Logo">
-              <img
-                src={logoSmall}
-                className="d-inline d-lg-none"
-                alt="Logo pohodové devítky"
-                style={{ width: 34, height: 34 }}
-              />
-              <img
-                src={logoLarge}
-                className="d-none d-lg-inline my-2"
-                alt="Logo pohodové devítky"
-                style={{ width: 300, height: 45 }}
-              />
-            </Link>
+          <NavbarBrand tag={Link} to="/" title="Logo">
+            <img
+              src={logoSmall}
+              className="d-inline d-lg-none"
+              alt="Logo pohodové devítky"
+              style={{ width: 34, height: 34 }}
+            />
+            <img
+              src={logoLarge}
+              className="d-none d-lg-inline my-2"
+              alt="Logo pohodové devítky"
+              style={{ width: 300, height: 45 }}
+            />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

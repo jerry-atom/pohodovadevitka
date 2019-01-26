@@ -3,21 +3,22 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import HomeCarousel from '../components/HomeCarousel';
-import { Card, CardBody, CardFooter, Container } from "reactstrap";
+import { Card, CardBody, CardFooter, CardTitle, Container } from "reactstrap";
+import { FaCalendar } from "react-icons/fa";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Post = (post) => (
   <Card>
     <CardBody>
-      <p class="card-title">{ post.frontmatter.title }</p>
+      <CardTitle>{ post.frontmatter.title }</CardTitle>
     </CardBody>
     <CardFooter>
       <Link className="card-link" to={post.fields.slug}>
         Více &raquo;
       </Link>
-      <small class="text-muted float-right">
-        <i class="fas fa-calendar"></i> {post.frontmatter.date}
+      <small className="text-muted float-right">
+        <FaCalendar /> {post.frontmatter.date}
       </small>
     </CardFooter>
   </Card>
@@ -32,14 +33,15 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <Container className="py-3">
-          <h1 class="py-3">PoHodová devítka <small class="text-muted">běžecký závod Velké Bíteše</small></h1>
-          <p class="lead">
+          <h1 className="py-3">PoHodová devítka <small className="text-muted">běžecký závod Velké Bíteše</small></h1>
+          <p className="lead">
             Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
           </p>
 
-          <HomeCarousel items={items}/>
-
           <div className="row">
+            <div className="col-12 pb-3">
+              <HomeCarousel items={items}/>
+            </div>
             {posts.map(({ node: post }) => <div className="col-12 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
           </div>
         </Container>

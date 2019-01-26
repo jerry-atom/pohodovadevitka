@@ -2,7 +2,10 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
 
+import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+
+import "./all.scss";
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
@@ -17,7 +20,7 @@ const TemplateWrapper = ({ children }) => (
         }
     `}
     render={data => (
-      <div>
+      <>
         <Helmet>
           <html lang="cs" />
           <title>{data.site.siteMetadata.title}</title>
@@ -35,9 +38,13 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:url" content="/" />
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
+
         <Navbar />
-        <div>{children}</div>
-      </div>
+
+        <main>{children}</main>
+
+        <Footer />
+      </>
     )}
   />
 )
