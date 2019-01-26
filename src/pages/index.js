@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
-import { Card, CardBody, CardFooter, CardLink, Container } from "reactstrap";
+import HomeCarousel from '../components/HomeCarousel';
+import { Card, CardBody, CardFooter, Container } from "reactstrap";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -22,10 +23,11 @@ const Post = (post) => (
   </Card>
 );
 
-export default class IndexPage extends React.Component {
+class IndexPage extends React.Component {
   render() {
     const { data } = this.props;
     const { edges: posts } = data.allMarkdownRemark;
+    const { edges: items } = data.allFile;
 
     return (
       <Layout>
@@ -35,8 +37,10 @@ export default class IndexPage extends React.Component {
             Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
           </p>
 
+          <HomeCarousel items={items}/>
+
           <div className="row">
-            {posts.map(({ node: post }) => <div className="col-12 col-md-6 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
+            {posts.map(({ node: post }) => <div className="col-12 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
           </div>
         </Container>
       </Layout>
@@ -46,6 +50,9 @@ export default class IndexPage extends React.Component {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
+    allFiles: PropTypes.shape({
+      edges: PropTypes.array
+    }),
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array
     })
@@ -54,6 +61,18 @@ IndexPage.propTypes = {
 
 export const pageQuery = graphql`
   query IndexQuery {
+    allFile(filter: {sourceInstanceName: {eq: "uploads"}, name:{regex: "/carousel-[0-9]+/"}}) {
+      edges {
+        node {
+          id
+          childImageSharp {
+            fluid(maxWidth: 900) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
@@ -75,3 +94,5 @@ export const pageQuery = graphql`
     }
   }
 `;
+
+export default IndexPage;
