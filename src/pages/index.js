@@ -3,10 +3,8 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import HomeCarousel from '../components/HomeCarousel';
-import { Card, CardBody, CardFooter, CardTitle, Container } from "reactstrap";
+import { Card, CardBody, CardFooter, CardTitle } from "reactstrap";
 import { FaCalendar } from "react-icons/fa";
-
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const Post = (post) => (
   <Card>
@@ -32,19 +30,17 @@ class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <Container className="py-3">
-          <h1 className="py-3">PoHodová devítka <small className="text-muted">běžecký závod Velké Bíteše</small></h1>
-          <p className="lead">
-            Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
-          </p>
+        <h1 className="py-3">PoHodová devítka <small className="text-muted">běžecký závod Velké Bíteše</small></h1>
+        <p className="lead">
+          Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
+        </p>
 
-          <div className="row">
-            <div className="col-12 pb-3">
-              <HomeCarousel items={items}/>
-            </div>
-            {posts.map(({ node: post }) => <div className="col-12 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
+        <div className="row">
+          <div className="col-12 pb-3">
+            <HomeCarousel items={items}/>
           </div>
-        </Container>
+          {posts.map(({ node: post }) => <div className="col-12 col-lg-4 pb-3" key={post.id}>{Post(post)}</div>)}
+        </div>
       </Layout>
     );
   }
