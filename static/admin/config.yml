@@ -20,8 +20,20 @@ collections:
       - {label: "Tags", name: "tags", widget: "list"}
 
   - name: "pages"
-    label: "Pages"
+    label: "Stránky"
     files:
+      - file: "src/pages/team/index.md"
+        label: "Kdo jsme"
+        name: "kdo-jsme"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team-page"}
+          - {label: "Členové", name: "members", widget: "object", fields: [
+            {label: "Jméno", name: "name", widget: "string"},
+            {label: "Portrét", name: "image", widget: "image"},
+            {label: "Sporty", name: "sports", widget: "list"},
+            {label: "Oblíbení sportovci", name: "favorits", widget: "object", fields: [{label: "Jméno", name: "name", widget: "string"}, {label: "Jméno", name: "name", widget: "string"}]},
+            {label: "Popis", name: "description", widget: "markdown"},
+          ]}
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"
