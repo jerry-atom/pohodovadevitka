@@ -50,5 +50,8 @@
   "devDependencies": {
     "prettier": "^1.16.1",
     "rimraf": "^2.6.3"
-  }
+  },
+  "resolutions": {
+    "terser": "3.14.1"
+  }  
 }
