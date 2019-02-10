@@ -4,7 +4,7 @@ import { Container } from "reactstrap";
 import { StaticQuery, graphql } from "gatsby";
 
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import TopMenu from "../components/TopMenu";
 
 import "bootstrap/scss/bootstrap.scss";
 import "./all.scss";
@@ -62,7 +62,7 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:image" content="/img/og-image.png" />
         </Helmet>
 
-        <Navbar />
+        <TopMenu />
 
         <main>
           <Container className="py-3">{children}</Container>
