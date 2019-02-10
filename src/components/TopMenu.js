@@ -115,7 +115,7 @@ const query = graphql`
           }
           frontmatter {
             title
-            year
+            startDate
           }
         }
       }
@@ -126,7 +126,7 @@ const query = graphql`
 const mapResults = x => ({
   slug: x.node.fields.slug,
   title: x.node.frontmatter.title,
-  year: Number(x.node.frontmatter.year),
+  year: x.node.frontmatter.startDate,
 });
 
 const TopMenu = () => (

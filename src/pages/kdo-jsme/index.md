@@ -3,7 +3,7 @@ templateKey: team-page
 title: Kdo jsme
 members:
   - name: Zdeněk Kundera
-    image: /img/zdenda.jpg
+    image: /uploads/zdenda.jpg
     sports:
       - cyklistika
       - běžky
@@ -25,7 +25,7 @@ members:
       případně triatlon. Na plaveckou část triatlonu by ovšem potřeboval
       rukávky.
   - name: Martin Macholán
-    image: /img/martin.jpg
+    image: /uploads/martin.jpg
     sports:
       - cyklistika
       - plavání
@@ -51,7 +51,7 @@ members:
       <a href="http://www.spartaktrebic.cz/">Spartaku Třebíč</a>, za který sbírá
       vavříny na poli cti a slávy.
   - name: Ondřej Plechatý
-    image: /img/ondra.jpg
+    image: /uploads/ondra.jpg
     sports:
       - fotbal
       - kolo

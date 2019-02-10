@@ -2,7 +2,7 @@ import React from "react";
 import { Button, ButtonToolbar } from "reactstrap";
 import { FaDownload, FaPrint } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { graphql } from "gatsby";
+import { graphql, withPrefix } from "gatsby";
 import Layout from "../components/Layout";
 import ResultTable from "../components/ResultTable";
 
@@ -34,7 +34,7 @@ const ResultsPage = ({ data }) => {
           className="text-white"
           color="secondary"
           download
-          href={proposition}
+          href={withPrefix(proposition.relativePath)}
           size="md"
           tag="a"
           title="Stáhnout propozice jako PDF"
@@ -65,7 +65,10 @@ export const resultsPageQuery = graphql`
     ) {
       frontmatter {
         title
-        proposition
+        proposition {
+          relativePath
+        }
+        startDate
         races {
           name
           categories {

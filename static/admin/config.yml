@@ -2,8 +2,9 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: static/img
-public_folder: /img
+logo_url: https://www.pohodovadevitka.cz/images/logo.png
+media_folder: static/uploads
+public_folder: /assets
 
 collections:
   - name: blog
@@ -32,7 +33,8 @@ collections:
         name: tags
         widget: list
   - name: results
-    label: "Výsledky"
+    label: "Ročníky"
+    label_singular: "Ročník"
     folder: "src/pages/results"
     create: true
     fields:
@@ -40,45 +42,86 @@ collections:
         name: templateKey,
         widget: hidden,
         default: "results-page"
-      - label: "Title"
+      - label: "Název ročníku"
         name: title
         widget: string
-      - label: "Závody"
+      - label: "Ročník"
+        name: startDate
+        widget: date
+      - label: "Propozice"
+        name: proposition
+        widget: file
+      - label: "Disciplíny"
+        label_singular: "Disciplína"
         name: races
-        widget: object
+        widget: list
         fields:
-          - label: "Disciplína"
+          - label: "Název disciplíny"
             name: name
             widget: string
-          - label: "Výsledky"
-            name: races
-            widget: object
+          - label: "Kategorie"
+            name: categories
+            widget: list
             fields:
+              - label: "Název kategorie"
+                name: name
+                widget: string
+              - label: "Zkratka"
+                name: abbr
+                widget: string
+              - label: "Pohlaví"
+                name: gender
+                widget: select
+                default: male
+                options:
+                  - { label: "Muži", value: "male" }
+                  - { label: "Ženy", value: "female" }
+              - label: "Ročníky od"
+                name: yearFrom
+                widget: number
+                valueType: int
+                min: 1900
+                max: 2100
+              - label: "Ročníky do"
+                name: yearTo
+                widget: number
+                valueType: int
+                min: 1900
+                max: 2100
+          - label: "Výsledky"
+            label_singular: "Výsledky"
+            name: results
+            widget: list
+            fields:
+              - label: "Jméno závodníka"
+                name: name
+                widget: string
               - label: "Kategorie"
                 name: category
                 widget: string
+                hint: "Musí přesně odpovídat zkratece nekteré kategorie této discipíny"
               - label: "Startovní číslo"
                 name: number
-                widget: string
-              - label: "Jméno"
-                name: name
                 widget: string
               - label: "Ročník"
                 name: year
                 widget: number
+                valueType: int
+                min: 1900
+                max: 2100
               - label: "Klub"
                 name: club
                 widget: string
               - label: "Čas"
                 name: time
                 widget: string
-                pattern: ["^\d{2}:\d{2}:\d{2}\.\d{2}$", "Musí být platný čas v ISO formátu: hh:mm:ss.uuu"
+                pattern: ["^[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}$", "Musí být platný čas v ISO formátu: hh:mm:ss.uuu"]
   - name: pages
     label: "Stránky"
     files:
-      - file: "src/pages/team/index.md"
+      - file: "src/pages/kdo-jsme/index.md"
         label: "Kdo jsme"
-        name: "kdo-jsme"
+        name: kdo-jsme
         fields:
           - label: "Template Key"
             name: templateKey
@@ -86,7 +129,7 @@ collections:
             default: "team-page"
           - label: "Členové"
             name: members
-            widget: object
+            widget: list
             fields:
               - label: "Jméno"
                 name: name
@@ -97,16 +140,17 @@ collections:
               - label: "Sporty"
                 name: sports
                 widget: list
+                hint: "čárkou oddělený seznam oblíbených sportů"
               - label: "Oblíbení sportovci"
                 name: favorits
-                widget: object
+                widget: list
                 fields:
                   - label: "Jméno"
                     name: name
                     widget: string
-                  - label: "Jméno"
-                    name: name
+                  - label: "Webová adresa"
+                    name: url
                     widget: string
               - label: "Popis"
                 name: description
-                widget: markdown
+                widget: text

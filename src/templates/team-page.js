@@ -4,17 +4,17 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import TeamMember from "../components/TeamMember";
 
-const TeamPage = ({ data }) => {
-  const { markdownRemark: team } = data;
+export const TeamPageTemplate = ({ members }) => (
+  <>
+    {members.map(member => <TeamMember key={member.name} {...member} />)}
+  </>
+);
 
-  return (
-    <Layout>
-      {team.frontmatter.members.map(member => (
-        <TeamMember key={member.name} {...member} />
-      ))}
-    </Layout>
-  );
-};
+const TeamPage = ({ data }) => (
+  <Layout>
+    <TeamPageTemplate members={data.markdownRemark.frontmatter.members} />
+  </Layout>
+);
 
 TeamPage.propTypes = {
   data: PropTypes.object.isRequired
