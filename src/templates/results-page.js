@@ -1,8 +1,10 @@
 import React from "react";
+import { Button, ButtonToolbar } from "reactstrap";
+import { FaDownload, FaPrint } from "react-icons/fa";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import ResultTable from '../components/ResultTable';
+import ResultTable from "../components/ResultTable";
 
 const Race = ({ name, results }) => (
   <section>
@@ -12,13 +14,39 @@ const Race = ({ name, results }) => (
 );
 
 const ResultsPage = ({ data }) => {
-  // const categories = data.markdownRemark.frontmatter.categories;
-  const races = data.markdownRemark.frontmatter.races;
+  const { title, proposition, races } = data.markdownRemark.frontmatter;
 
   return (
     <Layout>
-      <h1 className="py-3">{data.markdownRemark.frontmatter.title}</h1>
-      {races.map(race => <Race {...race} key={race.name} />)}
+      <ButtonToolbar className="justify-content-end d-print-none">
+        <Button
+          aria-label="Vytisknout"
+          className="mr-2"
+          color="success"
+          onClick={() => window.print()}
+          size="md"
+          title="Vytisknout"
+        >
+          <FaPrint />
+        </Button>
+        <Button
+          aria-label="Stáhnout propozice jako PDF"
+          className="text-white"
+          color="secondary"
+          download
+          href={proposition}
+          size="md"
+          tag="a"
+          title="Stáhnout propozice jako PDF"
+        >
+          <FaDownload />
+        </Button>
+      </ButtonToolbar>
+      <hr />
+      <h1 className="py-3">{title}</h1>
+      {races.map(race => (
+        <Race {...race} key={race.name} />
+      ))}
     </Layout>
   );
 };
@@ -31,9 +59,13 @@ export default ResultsPage;
 
 export const resultsPageQuery = graphql`
   query ResultsPage($id: String!) {
-    markdownRemark(id: { eq: $id }, frontmatter: {templateKey: {eq: "results-page"}}) {
+    markdownRemark(
+      id: { eq: $id }
+      frontmatter: { templateKey: { eq: "results-page" } }
+    ) {
       frontmatter {
         title
+        proposition
         races {
           name
           categories {
@@ -54,5 +86,5 @@ export const resultsPageQuery = graphql`
         }
       }
     }
-  }  
+  }
 `;
