@@ -35,7 +35,7 @@ collections:
   - name: results
     label: "Ročníky"
     label_singular: "Ročník"
-    folder: "src/pages/results"
+    folder: "src/pages/vysledky"
     create: true
     fields:
       - label: "Template Key"
