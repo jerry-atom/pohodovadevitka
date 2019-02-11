@@ -56,17 +56,17 @@ class TopMenuComponent extends React.Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="#!">
+                <NavLink tag={Link} to="/propozice/">
                   Propozice
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="https://pohodovadevitka.rajce.idnes.cz/">
+                <NavLink href="https://pohodovadevitka.rajce.idnes.cz/">
                   Fotogalerie
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="#!">
+                <NavLink href="#!">
                   Novinky
                 </NavLink>
               </NavItem>
@@ -90,7 +90,7 @@ class TopMenuComponent extends React.Component {
                   <DropdownItem tag={Link} to="/kdo-jsme/">
                     Kdo jsme
                   </DropdownItem>
-                  <DropdownItem tag={Link} to="/kdo-jsme/">
+                  <DropdownItem tag={Link} to="/jak-to-cele-vzniklo/">
                     Jak to celé vzniklo?
                   </DropdownItem>
                 </DropdownMenu>

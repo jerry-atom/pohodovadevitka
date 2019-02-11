@@ -30,7 +30,7 @@ class IndexPage extends React.Component {
 
     return (
       <Layout>
-        <h1 className="py-3">PoHodová devítka <small className="text-muted">běžecký závod Velké Bíteše</small></h1>
+        <h1 className="py-3"><span className="phd-text-green">Po</span><span className="phd-text-red">Hodová</span> <span className="phd-text-blue">devítka</span> <small className="text-muted">běžecký závod Velké Bíteše</small></h1>
         <p className="lead">
           Běžecký závod ve Velké Bíteši, který se pořádá v září, vždy po zdejších hodech. Hlavní trasa měří 9km, děti mohou běžet kratší trasy.
         </p>

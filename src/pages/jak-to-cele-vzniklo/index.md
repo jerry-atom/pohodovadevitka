@@ -3,6 +3,8 @@ templateKey: simple-page
 title: "Jak to celé vzniklo?"
 ---
 
+# Jak to celé vzniklo?
+
 Myšlenka uspořádat v Bíteši běžecký závod je stará už nějaký ten rok a zrodila se v hlavě mé a mých běžeckých kolegů a kamarádů Martina, Ondry a Petra během jednoho z dlouhých zimních výklusů, kdy mozek ještě stíhá myslet a rodí se řada nápadů – někdy snad i dobrých. :-)
 
 Každý z nás, často společně, jsme objezdili desítky závodů větších i menších v okolí poměrně blízkém i vzdálenějším. Nejčastěji se účastníme závodů v Brně a jeho okolí, kde se koná nespočet běžeckých akcí, stejně jako v celém Jihomoravském kraji. Fakt, že Vysočina je na běžecké závody o poznání „slabší“, je do očí bijící, což byl jeden z hlavních motivů závod v Bíteši uspořádat. Okolí Bíteše máme proběhané skrz naskrz a víme, že se zde dá vymyslet spousta pěkných tras pro závod krosový, silniční nebo kombinovaný. Světe div se, i v Bíteši je v poslední době zřejmé, že běžecký „boom“ z větších měst dorazil taky k nám. Ještě před několika lety aby běžce na Bítešsku pohledal, dneska už tu a tam nějaký „forest“ utíká. A to je dobře!

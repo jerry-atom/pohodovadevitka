@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, ButtonToolbar } from "reactstrap";
-import { FaDownload, FaPrint } from "react-icons/fa";
 import PropTypes from "prop-types";
-import { graphql, withPrefix } from "gatsby";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import ResultTable from "../components/ResultTable";
+import Toolbar from "../components/Toolbar";
 
 const Race = ({ name, results }) => (
   <section>
@@ -18,31 +17,7 @@ const ResultsPage = ({ data }) => {
 
   return (
     <Layout>
-      <ButtonToolbar className="justify-content-end d-print-none">
-        <Button
-          aria-label="Vytisknout"
-          className="mr-2"
-          color="success"
-          onClick={() => window.print()}
-          size="md"
-          title="Vytisknout"
-        >
-          <FaPrint />
-        </Button>
-        <Button
-          aria-label="Stáhnout propozice jako PDF"
-          className="text-white"
-          color="secondary"
-          download
-          href={withPrefix(proposition.relativePath)}
-          size="md"
-          tag="a"
-          title="Stáhnout propozice jako PDF"
-        >
-          <FaDownload />
-        </Button>
-      </ButtonToolbar>
-      <hr />
+      <Toolbar download={({relativePath: proposition.relativePath})} print={1} />
       <h1 className="py-3">{title}</h1>
       {races.map(race => (
         <Race {...race} key={race.name} />

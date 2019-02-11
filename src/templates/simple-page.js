@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
+import Toolbar from "../components/Toolbar";
 
 const SimplePage = ({ data }) => {
   const { markdownRemark: page } = data;
 
   return (
     <Layout>
-      <h1 className="py-3">{page.frontmatter.title}</h1>
+      <Toolbar {...page.frontmatter} />
       <div dangerouslySetInnerHTML={{ __html: page.html }} />
     </Layout>
   );
@@ -27,8 +28,12 @@ export const SimplePageQuery = graphql`
       frontmatter: { templateKey: { eq: "simple-page" } }
     ) {
       frontmatter {
-        templateKey
         title
+        print
+        download {
+          relativePath
+          id
+        }
       }
       html
     }

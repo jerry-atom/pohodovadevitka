@@ -12,6 +12,7 @@ export const TeamPageTemplate = ({ members }) => (
 
 const TeamPage = ({ data }) => (
   <Layout>
+    <h1 className="py-3">{data.markdownRemark.frontmatter.title}</h1>
     <TeamPageTemplate members={data.markdownRemark.frontmatter.members} />
   </Layout>
 );

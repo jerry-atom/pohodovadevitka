@@ -3,7 +3,6 @@ $phd-blue: #6fd6f7;
 $phd-green: #d7e61b;
 $phd-background: #e6efef;
 
-
 body {
   background: #fff url(../img/bg.png) repeat-x 0 3px;
   padding-top: 20px;
@@ -15,13 +14,16 @@ main {
   h1 {
     color: $phd-red;
   }
-  h2 {
+
+  .phd-text-red {
+    color: $phd-red;
+  }
+  .phd-text-blue {
     color: $phd-blue;
   }
-  h2 {
+  .phd-text-green {
     color: $phd-green;
   }
-
 }
 
 table.results tbody {
