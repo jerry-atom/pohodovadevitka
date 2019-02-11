@@ -181,12 +181,15 @@ print: 1
 
 <h2 class="my-3">TRASA HLAVNÍHO ZÁVODU</h2>
 <a href="/uploads/mapa-2018.jpg">
-  <img
-    class="img-thumbnail my-3"
-    src="/uploads/mapa-2018.jpg"
-    alt="mapa závodu"
-    width="1101"
-  >
+  <picture>
+    <source srcset="/uploads/mapa-2018.webp" type="image/webp">
+    <img
+      class="img-thumbnail my-3"
+      src="/uploads/mapa-2018.jpg"
+      alt="mapa závodu"
+      width="1101"
+    />
+  </picture>
 </a>
 <p>
   Menší změna oproti loňsku, přibude více krosových pasáží a trocha kopečků ☺
