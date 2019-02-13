@@ -52,7 +52,7 @@ class TopMenuComponent extends React.Component {
               style={{ width: 300, height: 45 }}
             />
           </NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler onClick={this.toggle} aria-label="Rozbalit menu"/>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
