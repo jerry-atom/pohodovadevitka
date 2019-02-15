@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/Layout";
 import HomeCarousel from '../components/HomeCarousel';
+import Time from '../components/Time';
 import { Card, CardBody, CardFooter, CardTitle } from "reactstrap";
 import { FaCalendar } from "react-icons/fa";
 
@@ -16,7 +17,7 @@ const Post = (post) => (
         Více &raquo;
       </Link>
       <small className="text-muted float-right">
-        <FaCalendar /> {post.frontmatter.date}
+        <FaCalendar /> <Time date={post.frontmatter.date} />
       </small>
     </CardFooter>
   </Card>
@@ -72,6 +73,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(
+      limit: 3
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
     ) {
@@ -85,7 +87,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            date
           }
         }
       }

@@ -65,11 +65,6 @@ class TopMenuComponent extends React.Component {
                   Fotogalerie
                 </NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="#!">
-                  Novinky
-                </NavLink>
-              </NavItem>
               <UncontrolledDropdown>
                 <DropdownToggle nav caret>
                   Výsledky
