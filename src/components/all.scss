@@ -113,3 +113,55 @@ table .number {
     filter: grayscale(0%);
   }
 }
+
+#propozice-logo {
+  position: relative;
+ 
+  h1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 12px;
+    font-size: 32px;
+    line-height: 100%;
+    font-weight: bold;
+  }
+  time {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 12px;
+    font-size: 24px;
+    line-height: 100%;
+    font-weight: bold;
+  }
+
+  @media (min-width: 540px) {
+    h1 {
+      font-size: 40px;
+    }
+    time {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 720px) {
+    h1 {
+      font-size: 40px;
+    }
+    time {
+      font-size: 40px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    h1 {
+      font-size: 60px;
+    }
+    time {
+      font-size: 50px;
+    }
+  }
+
+}
+

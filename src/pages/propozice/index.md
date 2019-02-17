@@ -10,40 +10,18 @@ print: 1
   <strong>5. ročník</strong> běžeckého závodu
 </p>
 
-<div class="my-3" style="position: relative;">
+<div class="my-3" id="propozice-logo">
   <picture>
     <source srcset="/uploads/logo.svg" type="image/svg+xml">
     <source srcset="/uploads/logo.webp" type="image/webp">
     <source srcset="/uploads/logo.jpg" type="image/jpeg">
     <img class="img-thumbnail img-fluid" src="/uploads/logo.png" alt="logo" width="1101">
   </picture>
-
-  <h1
-    style="
-      position: absolute;
-      top: 50px;
-      left: 40px;
-      font-family: sans-serif;
-      font-size: 65px;
-      font-weight: bold;
-    "
-  >
+  <h1>
     <span class="phd-text-green">PO</span><span class="phd-text-red">HODOVÁ</span>
     <span class="phd-text-blue">DEVÍTKA</span>
   </h1>
-
-  <div
-    style="
-      position: absolute;
-      bottom: 6px;
-      right: 24px;
-      font-family: sans-serif;
-      font-size: 45px;
-      font-weight: bold;
-    "
-  >
-    16.9.2018
-  </div>
+  <time datetime="2018-09-16T11:00:00.000Z">16.9.2018</time>
 </div>
 
 <h2 class="my-3">KDE?</h2>
