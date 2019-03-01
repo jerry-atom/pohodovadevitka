@@ -7,13 +7,16 @@ import Time from '../components/Time';
 import { Card, CardBody, CardFooter, CardTitle } from "reactstrap";
 import { FaCalendar } from "react-icons/fa";
 
+const newPathRegExp = /^(\/novinky\/\d+)-(\d+)-(\d+)-(.*)/;
+const toNewsPath = path => path.replace(newPathRegExp, "$1/$2/$3/$4");
+
 const Post = (post) => (
   <Card>
     <CardBody>
       <CardTitle>{ post.frontmatter.title }</CardTitle>
     </CardBody>
     <CardFooter>
-      <Link className="card-link" to={post.fields.slug}>
+      <Link className="card-link" to={toNewsPath(post.fields.slug)}>
         Více &raquo;
       </Link>
       <small className="text-muted float-right">
